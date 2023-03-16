@@ -32,7 +32,7 @@
 	
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
-        <input type="text" id="input">
+        <input type="text" id="input"><br>
 		<button onclick="makeNewDiv()">Add value</button>
         <button id="get" onclick="get()">Get</button>
 		<button id="delay" onclick="delay()">Delay</button>
@@ -53,5 +53,24 @@
 		container.appendChild(element)
 		
 	}
+    function get(){
+        let queueItems = document.getElementsByClassName("delayQ")
+       let length = queueItems.length
+       if(length>0){
+             queueItems[0].remove()
+       }
+    }
+    
+    function delay(){
+        let queueItems = document.getElementsByClassName("delayQ")
+        let length = queueItems.length
+        console.log(length)
+        if(length>1){
+            let removedItem = queueItems[0]
+            queueItems[0].remove()
+            let container = document.getElementById('target')
+		    container.insertBefore(removedItem, container.firstChild)
+        }
+    }
 </script>
 </html>	
