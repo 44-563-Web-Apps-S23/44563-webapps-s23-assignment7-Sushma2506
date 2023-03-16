@@ -19,6 +19,7 @@
 <p id="penalty" style="background-color: bisque;" color="Black">Penalty is zero</p>
 <p style="background-color: blue;" color="Black" onclick="help()">Click for help</p>
 <p style="background-color: burlywood;" color="Black" id="help">Help report</p>
+<p><button onclick="bonus()">Bonus</button></p>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
         <div><img src="Images/Burning_Bush_2.jpg" id="img1" height="100" width="100" alt="bush" onclick="check(0)"></div>
@@ -110,7 +111,45 @@
         penalty += 2
         document.getElementById("penalty").innerHTML = "Penalty is " + penalty
     }
-
+    let r1, r2, r3
+    function bonus(){
+        r1=Math.floor(Math.random()*24);
+        r2=Math.floor(Math.random()*24);
+        r3=Math.floor(Math.random()*24);
+        lastCheck=r3;
+        catLocation=r1;
+        mouseLocation=r2;
+        bonus=0;
+        penalty=0;
+        let last_col=lastCheck%6;
+        let last_row=Math.floor(lastCheck/6);
+        let cat_col=catLocation%6;
+        let cat_row=Math.floor(catLocation/6);
+        let col_diff=Math.abs(lastcol-catcol);
+        let row_diff=(Math.abs(lastrow-catrow));
+        let rat_col=mouseLocation%6;
+        let rat_row=Math.floor(mouseLocation/6);
+        let rat_col_diff=Math.abs(last_col-rat_col);
+        let rat_row_diff=(Math.abs(last_row-rat_row));
+        console.log(row_diff,col_diff)
+        if(rat_row_diff<=1 && rat_col_diff<=1)
+        {
+            document.getElementById("help").innerHTML="squeek"
+            penalty +=2;
+            penalty.innerHTML="Penalty is "+penalty;
+        }
+        else if(row_diff<=1 && col_diff<=1)
+        {
+            document.getElementById("help").innerHTML="Meow"
+            penalty +=2;
+            penalty.innerHTML="Penalty is "+penalty;
+        }
+        else{
+            document.getElementById("help").innerHTML="sorry, no help available"
+            penalty +=2;
+            penalty.innerHTML="Penalty is "+penalty;
+        }
+    }
     </script>
 </body>
 </html>
